@@ -74,7 +74,7 @@ brew install tcpflow
 brew install tcpreplay
 brew install tcptrace
 brew install ucspi-tcp # `tcpserver` etc.
-brew install xpdf
+#brew install xpdf # SSL certificate issue
 brew install xz
 
 # Install other useful binaries.
@@ -93,6 +93,12 @@ brew install speedtest_cli
 brew install tree
 brew install webkit2png
 brew install zopfli
+brew install youtube-dl
+brew install pdftohtml
+brew install hub
+brew install Caskroom/cask/xquartz
+brew install pdf2image
+brew install wine
 
 # Install Node.js. Note: this installs `npm` too, using the recommended
 # installation method.

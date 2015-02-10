@@ -7,13 +7,18 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
-alias d="cd ~/Documents/Dropbox"
+alias d="cd /Applications/XAMPP/xamppfiles/htdocs" # DocumentRoot folder to web server
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/projects"
-alias g="git"
+alias g="hub" # Adds github features to git
 alias h="history"
 alias j="jobs"
+alias clean="find . -name ".DS_Store" -depth -exec rm {} \;" # Remove .DS_Store files recursively
+alias wgets='H="--header"; wget $H="Accept-Language: en-us,en;q=0.5" $H="Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" $H="Connection: keep-alive" -U "Mozilla/5.0 (Windows NT 5.1; rv:10.0.2) Gecko/20100101 Firefox/10.0.2" --referer=/ ' # Make wget impose as a browser
+
+# Use XAMPP's php if available
+[ -s /Applications/XAMPP/bin/php ] && alias php="/Applications/XAMPP/bin/php"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -100,6 +105,9 @@ alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.ar
 # Merge PDF files
 # Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`
 alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'
+
+# Youtube-dl
+alias video='cd ~/Movies && youtube-dl'
 
 # Disable Spotlight
 alias spotoff="sudo mdutil -a -i off"

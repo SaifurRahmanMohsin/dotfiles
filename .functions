@@ -16,6 +16,13 @@ function calc() {
 	printf "\n";
 }
 
+# Change directory to the folder of the specified file
+function sd() {
+	local dirname="${@%/}";
+	[ -f "${dirname}" ] && dirname=`dirname "${dirname}"`;
+	cd "${dirname}";
+}
+
 # Create a new directory and enter it
 function mkd() {
 	mkdir -p "$@" && cd "$_";
@@ -107,7 +114,7 @@ function server() {
 # (Requires PHP 5.4.0+.)
 function phpserver() {
 	local port="${1:-4000}";
-	local ip=$(ipconfig getifaddr en1);
+	local ip=$(ipconfig getifaddr en0);
 	sleep 1 && open "http://${ip}:${port}/" &
 	php -S "${ip}:${port}";
 }
@@ -243,4 +250,12 @@ function o() {
 # small enough for one screen.
 function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+}
+
+# Sync (keep backup) files from my web hosting server
+function sync() {
+	until rsync -vaP --delete me@hosting.com:/my/cloud/docroot/folder ~/Cloud; do
+	  echo Transfer disrupted, retrying in a second...
+	  sleep 1
+	done
 }
