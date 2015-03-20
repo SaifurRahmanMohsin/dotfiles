@@ -66,6 +66,7 @@ brew install hashpump
 brew install hydra
 brew install john
 brew install knock
+brew install less
 brew install nmap
 brew install pngcheck
 brew install socat
@@ -90,6 +91,7 @@ brew install pv
 brew install rename
 brew install rhino
 brew install speedtest_cli
+brew install ssh-copy-id
 brew install tree
 brew install webkit2png
 brew install zopfli
@@ -99,6 +101,10 @@ brew install hub
 brew install Caskroom/cask/xquartz
 brew install pdf2image
 brew install wine
+
+# Install composer and make it globally accessible
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
 
 # Install Node.js. Note: this installs `npm` too, using the recommended
 # installation method.
