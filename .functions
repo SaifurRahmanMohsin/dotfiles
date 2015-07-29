@@ -252,6 +252,20 @@ function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
+# Git push and upload to remote host
+function up() {
+	if [ -f config.ini ]; then
+	. config.ini
+	zip -r payload.zip . --exclude="*.git*" --exclude=*.DS_Store* --exclude=payload.zip --exclude=config.ini
+	scp payload.zip $DESTUSERNAME@$DESTHOSTNAME:$DESTPATH
+  rm payload.zip
+  ssh $DESTUSERNAME@$DESTHOSTNAME "unzip -o $DESTPATH/payload.zip -d $DESTPATH"
+	if ! [ -z ${DESTURL+x} ]; then open $DESTURL; fi
+	else
+		printf "Initialization file must first be created\r\n";
+	fi;
+}
+
 # Sync (keep backup) files from my web hosting server
 function sync() {
 	until rsync -vaP --delete me@hosting.com:/my/cloud/docroot/folder ~/Cloud; do
