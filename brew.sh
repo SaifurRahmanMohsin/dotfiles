@@ -101,6 +101,7 @@ brew install hub
 brew install Caskroom/cask/xquartz
 brew install pdf2image
 brew install wine
+brew install dark-mode
 
 # Install composer and make it globally accessible
 curl -sS https://getcomposer.org/installer | php
